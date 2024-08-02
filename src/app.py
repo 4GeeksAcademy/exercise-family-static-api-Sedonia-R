@@ -2,30 +2,31 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from datastructures import FamilyStructure
-#from models import Person
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 CORS(app)
 
-# create the jackson family object
 jackson_family = FamilyStructure("Jackson")
+
 john = {
     "first_name": "John",
     "last_name": jackson_family.last_name,
     "age": 33,
     "lucky_numbers": [7, 13, 22],
 }
+
 jane = {
     "first_name": "Jane",
     "last_name": jackson_family.last_name,
     "age": 35,
     "lucky_numbers": [10, 14, 3],
 }
+
 jimmy = {
     "first_name": "Jimmy",
     "last_name": jackson_family.last_name,
